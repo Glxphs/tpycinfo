@@ -4,7 +4,7 @@
     import navtitle from "$lib/navtitle.js"
 </script>
 <title>{$navtitle}</title>
-<Navbar title="{$navtitle}">
+<Navbar title="TPYC Info">
     <Navitem href="/">Home</Navitem>
     <Navitem href="/4a">4A Timetable</Navitem>
     <Navitem href="/4b">4B Timetable</Navitem>

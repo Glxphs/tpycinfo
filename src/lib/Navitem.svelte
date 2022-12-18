@@ -4,7 +4,7 @@
   $: active = $page.url.pathname === href
 </script>
 
-<li class="nav-item mx-3">
+<li class="nav-item">
   <a class="nav-link" class:active aria-current="page" {href}>
     <slot />
   </a>
