@@ -11,5 +11,6 @@
     <Navitem href="/4c">4C Timetable</Navitem>
     <Navitem href="/4d">4D Timetable</Navitem>
     <Navitem href="/chem">Chem Tools</Navitem>
+    <Navitem href="/calc">Calculator Program</Navitem>
 </Navbar>
 <slot></slot>
