@@ -26,7 +26,6 @@
                     <div id="formula-example" class="form-text">
                         Example: C6H12O6, CuSO4.5H2O, K3[Fe(CN)6]
                     </div>
-<!--                    result-->
                     <div class="mt-3">
                         <div class="form-text">
                             Molar mass
