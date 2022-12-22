@@ -407,6 +407,45 @@ export const classes4d = [
     ["English", "English", "E2", "E2", "CSD", "CSD", "Maths", "CTP"]
 ]
 
+export const examTimetable = {
+    '2023-01-03': [
+        {'subject': 'Chinese (1)', 'time': '08:45 - 10:15', 'room': 'Hall'},
+        {'subject': 'Chinese (2)', 'time': '10:45 - 13:00', 'room': 'Hall'}
+    ],
+    '2023-01-04': [
+        {'subject': 'English (1)', 'time': '08:30 - 10:30', 'room': 'Hall'},
+        {'subject': 'English (2)', 'time': '11:00 - 13:00', 'room': 'Hall'}
+    ],
+    '2023-01-05': [
+        {'subject': 'CSD', 'time': '08:30 - 10:30', 'room': 'Hall'},
+        {'subject': 'Chemistry', 'time': '11:00 - 13:00', 'room': 'Hall'}
+    ],
+    '2023-01-06': [
+        {'subject': 'Maths (1)', 'time': '08:30 - 10:00', 'room': 'Hall'},
+        {'subject': 'Maths (2)', 'time': '10:30 - 11:45', 'room': 'Hall'}
+    ],
+    '2023-01-09': [
+        {'subject': 'English (3)', 'time': '14:15 - 16:15', 'room': 'Hall'},
+    ],
+    '2023-01-10': [
+        {'subject': 'Economics', 'time': '08:45 - 10:45', 'room': 'Small Hall'},
+    ],
+    '2023-01-11': [
+        {'subject': 'Geography', 'time': '08:30 - 10:30', 'room': 'Small Hall'},
+        {'subject': 'English (4)', 'time': '11:00 - 13:00', 'room': 'TBC'}
+    ],
+    '2023-01-12': [
+        {'subject': 'Physics / History / BAFS', 'time': '08:30 - 10:30 (BAFS: 10:00)', 'room': 'Hall'},
+        {'subject': 'Visual Arts', 'time': '08:30 - 12:30', 'room': 'VA Room'}
+    ],
+    '2023-01-13': [
+        {'subject': 'Biology', 'time': '11:00 - 13:00', 'room': 'Hall'},
+    ],
+    '2023-01-16': [
+        {'subject': 'Chin. Hist. / ICT / M2', 'time': '08:30 - 10:30', 'room': 'Small Hall'}
+    ]
+}
+
 export const timeIntervals = [
     "08:30 - 09:10", "09:10 - 09:50", "10:05 - 10:45", "10:45 - 11:25", "11:40 - 12:20", "12:20 - 13:00", "14:10 - 14:50", "14:50 - 15:30", "15:30 - 16:10"
 ]

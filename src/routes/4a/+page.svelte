@@ -7,7 +7,7 @@
 <Meta title="4A Timetable" />
 <div class="container">
     <div class="row">
-        {#each {length: 9} as _, i}
+        {#each {length: 50} as _, i}
             <ClassesCard offset={i} classes={classes4a}></ClassesCard>
         {/each}
     </div>
