@@ -18,8 +18,7 @@
     const dayString = `${yyyy}-${mm}-${dd}`;
     const examClasses = examTimetable[dayString];
 
-    const isHoliday = dayString in publicHolidays
-    const holidayName = isHoliday ? publicHolidays[dayString] : undefined;
+    const isHoliday = dayString in publicHolidays || weekday === 'Sun'
 </script>
 
 <div class="col-12 col-lg-6 col-xl-4 py-3">
