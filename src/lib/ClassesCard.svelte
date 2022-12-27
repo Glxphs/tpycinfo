@@ -1,5 +1,5 @@
 <script>
-    import {examTimetable, timeIntervals} from "$lib/constants.js";
+    import {examTimetable, publicHolidays, timeIntervals} from "$lib/constants.js";
     import {getDayClasses, getTodayDay} from "$lib/helper.js";
     import Day from "$lib/Day.svelte";
 
@@ -17,17 +17,24 @@
 
     const dayString = `${yyyy}-${mm}-${dd}`;
     const examClasses = examTimetable[dayString];
+
+    const isHoliday = dayString in publicHolidays
+    const holidayName = isHoliday ? publicHolidays[dayString] : undefined;
 </script>
 
 <div class="col-12 col-lg-6 col-xl-4 py-3">
     <div class="card shadow">
         <h3 class="card-header card-title">
-            <span class="badge text-bg-secondary"><sup>{dd}</sup>⁄<sub>{mm}</sub></span> {weekday}
+<!--            <span class="badge text-bg-secondary"><sup>{dd}</sup>⁄<sub>{mm}</sub></span> {weekday}-->
+<!--            make text red if holiday, otherwise secondary-->
+            <span class="badge {isHoliday ? 'text-bg-danger' : 'text-bg-secondary'}"><sup>{dd}</sup>⁄<sub>{mm}</sub></span>
+            <span class="{isHoliday ? 'text-danger' : 'text-secondary'}">{weekday}
             {#if !examClasses}
                 (
                 <Day offset={offset}/>
                 )
             {/if}
+            </span>
             {#if badge}
                 <span class="badge rounded-pill text-bg-info">{badge}</span>
             {/if}
