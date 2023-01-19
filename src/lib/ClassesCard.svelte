@@ -21,7 +21,7 @@
     const isHoliday = dayString in publicHolidays || weekday === 'Sun'
 </script>
 
-<div class="col-12 col-lg-6 col-xl-4 py-3">
+<div class="col-12 col-lg-6 col-xl-4">
     <div class="card shadow">
         <h3 class="card-header card-title">
 <!--            <span class="badge text-bg-secondary"><sup>{dd}</sup>⁄<sub>{mm}</sub></span> {weekday}-->
@@ -72,3 +72,4 @@
         </div>
     </div>
 </div>
+

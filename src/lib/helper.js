@@ -16,6 +16,11 @@ export function getTodayDay(offset) {
     return daysMap[getTodayDate(offset)] || {'special': 'None'};
 }
 
+export function getTodayDayString(offset) {
+    const day = getTodayDay(offset);
+    return day.special || "Day" + day.day;
+}
+
 export function getDayClasses(dateInfo, classes) {
     return classes[dateInfo.day - 1];
 }

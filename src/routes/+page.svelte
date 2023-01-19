@@ -4,49 +4,47 @@
     $navtitle = "Home"
 </script>
 
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-lg-4 py-3">
-            <div class="card">
-                <div class="card-header">
-                    TPYC Info Website
-                </div>
-                <div class="card-body">
-                    Made by Glxphs & majin1005
-                </div>
-            </div>
+<div class="container max-w-7xl mx-auto p-8 space-y-4">
+    <h5 class="header">Timetables</h5>
+    <div class="text">
+        <div class="inline-flex rounded-md shadow-sm" role="group">
+            <a href="/4a/"
+               class="transition px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                4A
+            </a>
+            <a href="/4b/"
+               class="transition px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                4B
+            </a>
+            <a href="/4c/"
+               class="transition px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                4C
+            </a>
+            <a href="/4d/"
+               class="transition px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                4D
+            </a>
         </div>
-
-        <div class="col-12 col-lg-4 py-3">
-            <div class="card">
-                <div class="card-header">
-                    Timetables
-                </div>
-                <div class="card-body">
-                    <div class="btn-group" role="group" aria-label="Timetables">
-                        <a class="btn btn-outline-secondary" href="/4a/">4A</a>
-                        <a class="btn btn-outline-secondary" href="/4b/">4B</a>
-                        <a class="btn btn-outline-secondary" href="/4c/">4C</a>
-                        <a class="btn btn-outline-secondary" href="/4d/">4D</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-lg-4 py-3">
-            <div class="card">
-                <div class="card-header">
-                    Useful Links
-                </div>
-                <div class="card-body">
-                    <div class="btn-group" role="group" aria-label="Useful Links">
-                        <a class="btn btn-outline-secondary" href="http://www2.tpyc.edu.hk/templates/">EClass Login</a>
-                        <a class="btn btn-outline-secondary" href="https://www.tpyc.edu.hk/">TPYC Website</a>
-                        <a class="btn btn-outline-secondary"
-                           href="https://www.tpyc.edu.hk/sites/default/files/files/calendar.pdf">TPYC Calendar</a>
-                    </div>
-                </div>
-            </div>
+    </div>
+    <h5 class="header">
+        Useful Links
+    </h5>
+    <div class="text">
+        <div class="inline-flex rounded-md shadow-sm" role="group">
+            <a href="http://www2.tpyc.edu.hk/templates/"
+               class="transition px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                EClass Login
+            </a>
+            <a href="https://www.tpyc.edu.hk/"
+               class="transition px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                TPYC Website
+            </a>
+            <a href="https://www.tpyc.edu.hk/sites/default/files/files/calendar.pdf"
+               class="transition px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                TPYC Calendar
+            </a>
         </div>
     </div>
 </div>
+
+
