@@ -1,12 +1,20 @@
 <script>
-    import {getTodayDate, getTodayDayString} from "$lib/helper.js";
+    import {getDayClasses, getTodayDate, getTodayDay, getTodayDayString} from "$lib/helper.js";
     import dark from "$lib/dark.js";
+    import {examTimetable, publicHolidays} from "$lib/constants.js";
+    import Day from "$lib/Day.svelte";
 
     export let title;
 
     let shown = false;
-    let todayDate = getTodayDate(0)
-    let todayDay = getTodayDayString(0)
+    const today = new Date((new Date()).getTime());
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const longMonth = today.toLocaleString('en-US', { month: 'long' });
+    const dd = String(today.getDate()).padStart(2, '0');
+    const weekday = today.toLocaleDateString('en-US', {weekday: 'long'});
+    const dayString = `${yyyy}-${mm}-${dd}`;
+    const isHoliday = dayString in publicHolidays || weekday === 'Sun'
 </script>
 
 <!--<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">-->
@@ -26,7 +34,7 @@
 
 
 <header class="sticky top-0">
-    <nav class="backdrop-blur-sm px-4 lg:px-6 py-2 bg-white/30 dark:bg-gray-700/30 shadow-md">
+    <nav class="backdrop-blur-sm px-4 lg:px-6 py-2 bg-white/30 dark:bg-gray-700/30 border-b-slate-200 dark:border-b-slate-700 border-b">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <span class="flex items-center justify-between">
                 <a href="#" class="self-center text-xl font-mono font-semibold whitespace-nowrap dark:text-white">TPYC Info</a>
@@ -73,4 +81,13 @@
             </div>
         </div>
     </nav>
+    <div class="backdrop-blur-sm px-4 lg:px-6 py-2 bg-white/30 dark:bg-gray-700/30 shadow-md">
+        <div class="flex gap-2 mx-auto max-w-screen-xl">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+</svg>
+
+            {dd} {longMonth} {yyyy}, {weekday} (<Day offset=0/>)
+        </div>
+    </div>
 </header>
