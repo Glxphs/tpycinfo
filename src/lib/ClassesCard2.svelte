@@ -10,7 +10,7 @@
     const today = new Date((new Date()).getTime() + 86400000 * offset);
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const mmm = today.toLocaleString('default', {month: 'short'});
+    const mmm = today.toLocaleString('en-US', {month: 'short'});
     const dd = String(today.getDate()).padStart(2, '0');
     const weekday = today.toLocaleDateString('en-US', {weekday: 'long'});
     const dayInfo = getTodayDay(offset);
