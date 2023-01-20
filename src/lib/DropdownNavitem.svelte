@@ -1,5 +1,6 @@
 <script>
     let hidden = true;
+    import {slide} from "svelte/transition";
 </script>
 
 <li>
@@ -15,12 +16,13 @@
     </button>
     <div class="relative">
         <!-- Dropdown menu -->
-        <div id="dropdownNavbar"
-             class="absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-             class:hidden={hidden}>
-            <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" on:click={()=>{hidden=true}} aria-labelledby="dropdownLargeButton">
-                <slot></slot>
-            </ul>
-        </div>
+        {#if !hidden}
+            <div id="dropdownNavbar"
+                 class="absolute z-50 font-normal bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600" transition:slide>
+                <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" on:click={()=>{hidden=true}} aria-labelledby="dropdownLargeButton">
+                    <slot></slot>
+                </ul>
+            </div>
+        {/if}
     </div>
 </li>

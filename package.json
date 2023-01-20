@@ -37,9 +37,12 @@
 	"type": "module",
 	"dependencies": {
 		"@akikowo/chemical-balancer": "^1.0.8",
+		"@fortawesome/free-brands-svg-icons": "^6.2.1",
+		"@fortawesome/free-solid-svg-icons": "^6.2.1",
 		"bootstrap": "^5.2.3",
 		"molarmass.js": "^1.1.0",
 		"reaction-balancer": "^2.0.1",
+		"svelte-fa": "^3.0.3",
 		"svelte-markdown": "^0.2.3"
 	}
 }

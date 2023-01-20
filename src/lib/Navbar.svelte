@@ -1,8 +1,10 @@
 <script>
-    import {getDayClasses, getTodayDate, getTodayDay, getTodayDayString} from "$lib/helper.js";
     import dark from "$lib/dark.js";
-    import {examTimetable, publicHolidays} from "$lib/constants.js";
+    import {publicHolidays} from "$lib/constants.js";
     import Day from "$lib/Day.svelte";
+    import {fade} from 'svelte/transition';
+    import {faTemperatureThreeQuarters} from "@fortawesome/free-solid-svg-icons";
+    import Fa from "svelte-fa";
 
     export let title;
 
@@ -10,11 +12,14 @@
     const today = new Date((new Date()).getTime());
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const longMonth = today.toLocaleString('en-US', { month: 'long' });
+    const shortMonth = today.toLocaleString('en-US', {month: 'short'});
     const dd = String(today.getDate()).padStart(2, '0');
-    const weekday = today.toLocaleDateString('en-US', {weekday: 'long'});
+    const weekday = today.toLocaleDateString('en-US', {weekday: 'short'});
     const dayString = `${yyyy}-${mm}-${dd}`;
     const isHoliday = dayString in publicHolidays || weekday === 'Sun'
+
+    export let weatherData;
+    const temperature = weatherData.temperature.data.find(d => d.place === "Tuen Mun").value;
 </script>
 
 <!--<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">-->
@@ -34,8 +39,8 @@
 
 
 <header class="sticky top-0">
-    <nav class="backdrop-blur-sm px-4 lg:px-6 py-2 bg-white/30 dark:bg-gray-700/30 border-b-slate-200 dark:border-b-slate-700 border-b">
-        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+    <nav class="backdrop-blur-md px-4 lg:px-6 py-2 bg-white/30 dark:bg-gray-700/30 shadow-slate-800/10 shadow-md">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl border-b-slate-200 dark:border-b-slate-700 border-b mb-2">
             <span class="flex items-center justify-between">
                 <a href="#" class="self-center text-xl font-mono font-semibold whitespace-nowrap dark:text-white">TPYC Info</a>
             </span>
@@ -43,18 +48,15 @@
                 <button on:click={()=>{$dark = !$dark}} type="button"
                         class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition">
                     {#if $dark}
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                            <path fill-rule="evenodd"
+                                  d="M7.455 2.004a.75.75 0 01.26.77 7 7 0 009.958 7.967.75.75 0 011.067.853A8.5 8.5 0 116.647 1.921a.75.75 0 01.808.083z"
+                                  clip-rule="evenodd"/>
                         </svg>
                     {:else}
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                            <path d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zM10 15a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 15zM10 7a3 3 0 100 6 3 3 0 000-6zM15.657 5.404a.75.75 0 10-1.06-1.06l-1.061 1.06a.75.75 0 001.06 1.06l1.06-1.06zM6.464 14.596a.75.75 0 10-1.06-1.06l-1.06 1.06a.75.75 0 001.06 1.06l1.06-1.06zM18 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0118 10zM5 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 015 10zM14.596 15.657a.75.75 0 001.06-1.06l-1.06-1.061a.75.75 0 10-1.06 1.06l1.06 1.06zM5.404 6.464a.75.75 0 001.06-1.06l-1.06-1.06a.75.75 0 10-1.061 1.06l1.06 1.06z"/>
                         </svg>
-
                     {/if}
                 </button>
                 <button on:click={() => shown = !shown} type="button"
@@ -80,14 +82,23 @@
                 </ul>
             </div>
         </div>
-    </nav>
-    <div class="backdrop-blur-sm px-4 lg:px-6 py-2 bg-white/30 dark:bg-gray-700/30 shadow-md">
-        <div class="flex gap-2 mx-auto max-w-screen-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
-</svg>
+        <div class="flex justify-between mx-auto max-w-screen-xl">
+            <div class="flex gap-2 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                    <path d="M5.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V12zM6 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H6zM7.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H8a.75.75 0 01-.75-.75V12zM8 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H8zM9.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V10zM10 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H10zM9.25 14a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V14zM12 9.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V10a.75.75 0 00-.75-.75H12zM11.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H12a.75.75 0 01-.75-.75V12zM12 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H12zM13.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H14a.75.75 0 01-.75-.75V10zM14 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H14z"/>
+                    <path fill-rule="evenodd"
+                          d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                          clip-rule="evenodd"/>
+                </svg>
+                {dd} {shortMonth} {yyyy}, {weekday} (
+                <Day offset="0"/>
+                )
+            </div>
 
-            {dd} {longMonth} {yyyy}, {weekday} (<Day offset=0/>)
+            <div class="flex gap-2 items-center">
+                <Fa icon={faTemperatureThreeQuarters} size="lg"/>
+                {temperature}°C
+            </div>
         </div>
-    </div>
+    </nav>
 </header>
