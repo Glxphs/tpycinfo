@@ -3,6 +3,7 @@
     import Cropper from "svelte-easy-crop";
     import getCroppedImg from "./canvasUtils";
     import {onMount} from "svelte";
+    import Meta from "$lib/Meta.svelte";
 
     $navtitle = "Bio Image Generator"
 
@@ -236,7 +237,7 @@
 
 
 </script>
-
+<Meta title="Bio Image"/>
 <div class="container max-w-7xl mx-auto p-8 space-y-4">
     <h5 class="header">Biology Image Generator</h5>
     <div class="text">
