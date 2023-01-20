@@ -275,11 +275,11 @@
                        type="text"
                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:ring-2"
                        placeholder="洋葱表皮細胞 (200X)">
-                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
-                    您可以使用格式代碼，例如<br/>
-                    &b: 粗體, &i: 斜體, &r: 恢復正常, \n: 換行<br/>
-                    例子: &iHydrilla &rcells (200X)
-                </p>
+                <div class="flex flex-wrap justify-start mt-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    <div>您可以使用格式代碼，例如：</div>
+                    <div>&b: 粗體, &i: 斜體, &r: 恢復正常, \n: 換行，</div>
+                    <div>例子：&iHydrilla &rcells\nin concentrated\nsalt solution (640X)</div>
+                </div>
                 <div class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">照片</div>
                 {#if enableCrop === imageObj.id}
                     <div class="flex mb-3">
@@ -330,7 +330,7 @@
             <button type="button"
                     class="border-gray-300 dark:border-gray-400 border inline-flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition mb-3"
                     on:click={generate}>
-                    下載
+                下載
             </button>
         </div>
         <canvas class="border-slate-500 shadow-md border rounded-xl h-auto max-w-full"
