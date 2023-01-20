@@ -13,3 +13,7 @@
 .text {
     @apply font-normal text-gray-700 dark:text-gray-400;
 }
+
+.strong {
+    @apply font-bold dark:text-sky-400 text-sky-500
+}

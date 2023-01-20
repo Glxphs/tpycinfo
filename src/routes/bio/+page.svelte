@@ -241,7 +241,7 @@
 <div class="container max-w-7xl mx-auto p-8 space-y-4">
     <h5 class="header">Biology Image Generator</h5>
     <div class="text">
-        An image generator to generate microscope images for TPYC Biology.
+        An image generator to generate <span class="strong">microscope images</span> for TPYC Biology.
     </div>
     <div class="p-6 border-slate-500 border rounded-lg shadow-md">
         <div class="border-b-slate-500 border-b py-3 mb-3">
@@ -255,7 +255,8 @@
             <div class="border-b-slate-500 border-b py-3 mb-3">
                 <div class="flex items-center mb-2">
                     <div class="text-lg font-bold text-gray-900 dark:text-white">
-                        顯微照片 {imageObj.id + 1}</div>
+                        顯微照片 <span class="strong">{imageObj.id + 1}</span>
+                    </div>
                     <button
                             on:click={() => removeImage(imageObj.id)}
                             type="button"
@@ -278,7 +279,13 @@
                 <div class="flex flex-wrap justify-start mt-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
                     <div>您可以使用格式代碼，例如：</div>
                     <div>&b: 粗體, &i: 斜體, &r: 恢復正常, \n: 換行，</div>
-                    <div>例子：&iHydrilla &rcells\nin concentrated\nsalt solution (640X)</div>
+                    <div>
+                        例子：
+                        <span class="text-gray-400 dark:text-gray-500">&i</span>Hydrilla
+                        <span class="text-gray-400 dark:text-gray-500">&r</span>cells<span
+                            class="text-gray-400 dark:text-gray-500">\n</span>in concentrated<span
+                            class="text-gray-400 dark:text-gray-500">\n</span>salt solution (640X)
+                    </div>
                 </div>
                 <div class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">照片</div>
                 {#if enableCrop === imageObj.id}
@@ -311,7 +318,7 @@
         {/each}
         <div class="flex items-center">
             <div class="font-bold">
-                {mImages.length} 張顯微照片
+                <span class="strong">{mImages.length}</span> 張顯微照片
             </div>
             <button
                     on:click={addImage}
@@ -328,9 +335,14 @@
         <div class="flex items-center">
             <div class="font-bold mb-3 mr-3">預覽</div>
             <button type="button"
-                    class="border-gray-300 dark:border-gray-400 border inline-flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition mb-3"
+                    class="border-gray-300 dark:border-gray-400 border inline-flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition mb-3 gap-x-1"
                     on:click={generate}>
-                下載
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                    <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"/>
+                    <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"/>
+                </svg>
+
+                <span class="font-bold">下載</span>
             </button>
         </div>
         <canvas class="border-slate-500 shadow-md border rounded-xl h-auto max-w-full"

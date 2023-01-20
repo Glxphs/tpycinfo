@@ -8,7 +8,7 @@
 {#if active}
     <li>
         <a {href}
-           class="block py-2 pr-4 pl-3 text-white lg:text-primary-700 lg:bg-transparent lg:p-0 lg:rounded-lg bg-primary-700 dark:text-white"
+           class="block py-2 pr-4 pl-3 text-white lg:text-primary-700 lg:bg-transparent lg:p-0 lg:rounded-lg bg-sky-500 rounded-lg lg:rounded-0 lg:dark:text-sky-400"
            aria-current="page">
             <slot/>
         </a>
