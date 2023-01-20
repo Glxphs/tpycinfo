@@ -5,7 +5,7 @@
 
 <li>
     <button on:click={() => hidden = !hidden}
-            class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-semibold text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+            class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-semibold text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent border-b border-gray-100 dark:border-gray-700 lg:border-0">
         Timetables
         <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
              xmlns="http://www.w3.org/2000/svg">
