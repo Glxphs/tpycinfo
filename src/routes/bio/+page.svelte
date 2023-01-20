@@ -329,7 +329,7 @@
             <button type="button"
                     class="border-gray-300 dark:border-gray-400 border inline-flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition mb-3"
                     on:click={generate}>
-                    產生
+                    下載
             </button>
         </div>
         <canvas class="border-slate-500 shadow-md border rounded-xl h-auto max-w-full"
