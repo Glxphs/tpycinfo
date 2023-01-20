@@ -39,6 +39,7 @@
                         Timetable</a>
                 </li>
             </DropdownNavitem>
+            <Navitem href="/bio/">Bio Image</Navitem>
             <!--            <Navitem href="/4a">4A Timetable</Navitem>-->
             <!--            <Navitem href="/4b">4B Timetable</Navitem>-->
             <!--            <Navitem href="/4c">4C Timetable</Navitem>-->

@@ -42,7 +42,9 @@
 		"bootstrap": "^5.2.3",
 		"molarmass.js": "^1.1.0",
 		"reaction-balancer": "^2.0.1",
+		"svelte-easy-crop": "^1.0.8",
 		"svelte-fa": "^3.0.3",
-		"svelte-markdown": "^0.2.3"
+		"svelte-markdown": "^0.2.3",
+		"svelte-scrollto": "^0.2.0"
 	}
 }
