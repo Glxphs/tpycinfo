@@ -39,12 +39,18 @@
 		"@akikowo/chemical-balancer": "^1.0.8",
 		"@fortawesome/free-brands-svg-icons": "^6.2.1",
 		"@fortawesome/free-solid-svg-icons": "^6.2.1",
+		"@tinymce/tinymce-svelte": "^1.0.0",
+		"@tiptap/core": "^2.0.0-beta.209",
+		"@tiptap/extension-bold": "^2.0.0-beta.209",
+		"@tiptap/starter-kit": "^2.0.0-beta.209",
 		"bootstrap": "^5.2.3",
 		"molarmass.js": "^1.1.0",
 		"reaction-balancer": "^2.0.1",
 		"svelte-easy-crop": "^1.0.8",
 		"svelte-fa": "^3.0.3",
 		"svelte-markdown": "^0.2.3",
-		"svelte-scrollto": "^0.2.0"
+		"svelte-quill": "^1.2.0",
+		"svelte-scrollto": "^0.2.0",
+		"svelte-tiptap": "^0.7.0"
 	}
 }

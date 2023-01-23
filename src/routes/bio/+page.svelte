@@ -55,11 +55,6 @@
         ctx = canvas.getContext('2d');
     });
 
-    let squareSize = 400
-    let margin = 100
-    let textpx = 40
-    let textmargin = textpx + 10
-
     var styleMarker = '&';
 
     // table code style --> font style
@@ -171,6 +166,18 @@
         download(canvas, filename + ".png")
     }
 
+    let squareSize = 400
+    let margin = 100
+    let textpx = 40
+    let textmargin = textpx + 10
+
+    let scale = 2.5
+
+    squareSize *= scale
+    margin *= scale
+    textpx *= scale
+    textmargin *= scale
+
     $: {
         if (canvas != null && ctx != null && mImages.length > 0) {
             let n = mImages.length
@@ -178,7 +185,7 @@
             // find the title with most lines of mImages
             let maxLines = 0
             for (let i = 0; i < n; i++) {
-                let lines = mImages[i].name.split("\\n").length
+                let lines = mImages[i].name.split("\n").length
                 if (lines > maxLines) {
                     maxLines = lines
                 }
@@ -187,7 +194,7 @@
             let maxLineLength = 0
             let maxLineLengthString;
             for (let i = 0; i < n; i++) {
-                let lines = mImages[i].name.split("\\n")
+                let lines = mImages[i].name.split("\n")
                 for (let j = 0; j < lines.length; j++) {
                     if (lines[j].length > maxLineLength) {
                         maxLineLength = lines[j].length
@@ -221,7 +228,7 @@
                 }
 
                 let textyorig = heightNoNewLines / 2 - (squareSize + textmargin + textpx) / 2 + squareSize + textmargin
-                const split = value.name.split("\\n");
+                const split = value.name.split("\n");
                 for (let ti = 0; ti < split.length; ti++) {
                     let text = split[ti];
                     let replacedtext = text.replaceAll(/&[ribl]/ig, "")
@@ -272,19 +279,18 @@
 
                 </div>
                 <div class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">標題</div>
-                <input bind:value={imageObj.name}
-                       type="text"
-                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:ring-2"
-                       placeholder="洋葱表皮細胞 (200X)">
+                <textarea bind:value={imageObj.name} rows="3"
+                          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="洋葱表皮細胞 (200X)"></textarea>
                 <div class="flex flex-wrap justify-start mt-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
                     <div>您可以使用格式代碼，例如：</div>
-                    <div>&b: 粗體, &i: 斜體, &r: 恢復正常, \n: 換行，</div>
+                    <div>&b: 粗體, &i: 斜體, &r: 恢復正常</div>
                     <div>
                         例子：
                         <span class="text-gray-400 dark:text-gray-500">&i</span>Hydrilla
-                        <span class="text-gray-400 dark:text-gray-500">&r</span>cells<span
-                            class="text-gray-400 dark:text-gray-500">\n</span>in concentrated<span
-                            class="text-gray-400 dark:text-gray-500">\n</span>salt solution (640X)
+                        <span class="text-gray-400 dark:text-gray-500">&r</span>cells
+                        <br/>in concentrated
+                        <br/>salt solution (640X)
                     </div>
                 </div>
                 <div class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">照片</div>
@@ -335,7 +341,7 @@
         <div class="flex items-center">
             <div class="font-bold mb-3 mr-3">預覽</div>
             <button type="button"
-                    class="border-gray-300 dark:border-gray-400 border inline-flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition mb-3 gap-x-1"
+                    class="border-gray-300 dark:border-gray-400 border flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition mb-3 gap-x-1"
                     on:click={generate}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                     <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"/>
