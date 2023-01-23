@@ -4,6 +4,8 @@
     import getCroppedImg from "./canvasUtils";
     import {onMount} from "svelte";
     import Meta from "$lib/Meta.svelte";
+    import Fa from "svelte-fa";
+    import {faCircle, faRotateLeft, faRotateRight} from "@fortawesome/free-solid-svg-icons";
 
     $navtitle = "Bio Image Generator"
 
@@ -13,7 +15,8 @@
     function addImage() {
         mImages = [...mImages, {
             id: mImages.length,
-            name: ""
+            name: "",
+            rotation: 0
         }]
     }
 
@@ -178,6 +181,15 @@
     textpx *= scale
     textmargin *= scale
 
+    function drawImage(ctx, image, x, y, w, h, degrees) {
+        ctx.save();
+        ctx.translate(x + w / 2, y + h / 2);
+        ctx.rotate(degrees * Math.PI / 180.0);
+        ctx.translate(-x - w / 2, -y - h / 2);
+        ctx.drawImage(image, x, y, w, h);
+        ctx.restore();
+    }
+
     $: {
         if (canvas != null && ctx != null && mImages.length > 0) {
             let n = mImages.length
@@ -222,7 +234,7 @@
                 if (value.image) {
                     let img = new Image();
                     img.onload = function () {
-                        ctx.drawImage(img, x, heightNoNewLines / 2 - (squareSize + textmargin + textpx) / 2, squareSize, squareSize);
+                        drawImage(ctx, img, x, heightNoNewLines / 2 - (squareSize + textmargin + textpx) / 2, squareSize, squareSize, value.rotation);
                     };
                     img.src = value.image;
                 }
@@ -242,6 +254,20 @@
         }
     }
 
+    const tailwindRotations = {
+        0: "-rotate-360",
+        45: "rotate-45",
+        90: "rotate-90",
+        135: "rotate-135",
+        180: "rotate-180",
+        225: "rotate-225",
+        270: "rotate-270",
+        315: "rotate-315"
+    }
+
+    function rotateImageRight(id) {
+        mImages[id].rotation = (mImages[id].rotation + 90) % 360
+    }
 
 </script>
 <Meta title="Bio Image"/>
@@ -284,7 +310,7 @@
                           placeholder="洋葱表皮細胞 (200X)"></textarea>
                 <div class="flex flex-wrap justify-start mt-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
                     <div>您可以使用格式代碼，例如：</div>
-                    <div>&b: 粗體, &i: 斜體, &r: 恢復正常</div>
+                    <div>&b: 粗體, &i: 斜體, &r: 恢復正常，</div>
                     <div>
                         例子：
                         <span class="text-gray-400 dark:text-gray-500">&i</span>Hydrilla
@@ -302,23 +328,44 @@
                                     aspect={1}
                                     maxZoom={10}
                                     zoomSpeed={0.1}
+                                    cropShape={imageObj.circleCrop ? 'round' : 'rect'}
                                     bind:crop
                                     bind:zoom
                                     on:cropcomplete={(e) => pixelCrop = e.detail.pixels}
                             />
                         </div>
                     </div>
-                    <button type="button"
-                            class="border-gray-300 dark:border-gray-400 border inline-flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition mb-3"
-                            on:click={async () => {await cropImage(imageObj.id)}}>完成
-                    </button>
+                    <div class="flex items-center mb-3 gap-x-2">
+                        <button type="button"
+                                class="border-gray-300 dark:border-gray-400 border inline-flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition"
+                                on:click={async () => {await cropImage(imageObj.id)}}>完成
+                        </button>
+                        <button
+                                on:click={() => imageObj.circleCrop = !imageObj.circleCrop}
+                                type="button"
+                                class="border-gray-300 dark:border-gray-400 border inline-flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition {imageObj.circleCrop ? 'text-sky-500 dark:text-sky-400' : ''}">
+                            圓形切割
+                        </button>
+                    </div>
                 {:else}
                     <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 mb-3"
                            type="file" accept="image/*" on:change={(e)=>onFileSelected(e, imageObj.id)}
-                           bind:this={fileInput}>
+                           bind:this={fileInput}/>
                 {/if}
                 {#if imageObj.image}
-                    <img src={imageObj.image} class="w-40 h-40 rounded-xl mb-2">
+                    <div class="flex items-start">
+                        <div class="w-40 h-40 overflow-hidden bg-black rounded-xl">
+                            <img src={imageObj.image}
+                                 class="w-40 h-40 rounded-xl mb-2 transition {tailwindRotations[imageObj.rotation]}">
+                        </div>
+                        <button
+                                on:click={() => rotateImageRight(imageObj.id)}
+                                type="button"
+                                class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition">
+
+                            <Fa icon={faRotateRight} size="lg" class="w-5 h-5"/>
+                        </button>
+                    </div>
                 {/if}
             </div>
         {/each}
@@ -351,7 +398,7 @@
                 <span class="font-bold">下載</span>
             </button>
         </div>
-        <canvas class="border-slate-500 shadow-md border rounded-xl h-auto max-w-full"
+        <canvas class="border-slate-500 shadow-md border rounded-xl h-auto max-w-full lg:max-w-2xl"
                 bind:this={canvas}></canvas>
     </div>
 </div>
