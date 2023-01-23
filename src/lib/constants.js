@@ -1,3 +1,5 @@
+import {faCloudRain, faCloudShowersHeavy, faCloudSunRain} from "@fortawesome/free-solid-svg-icons";
+
 export const daysMap = {
     '2022-09-05': {'day': 1},
     '2022-09-06': {'day': 2},
@@ -503,4 +505,6 @@ export const examTimetable = {
 export const timeIntervals = [
     "08:30 - 09:10", "09:10 - 09:50", "10:05 - 10:45", "10:45 - 11:25", "11:40 - 12:20", "12:20 - 13:00", "14:10 - 14:50", "14:50 - 15:30", "15:30 - 16:10"
 ]
+
+export const rainIcons = [53, 54, 62, 63, 64, 65, 66]
 

@@ -1,8 +1,8 @@
 <script>
     import dark from "$lib/dark.js";
-    import {publicHolidays} from "$lib/constants.js";
+    import {publicHolidays, rainIcons} from "$lib/constants.js";
     import Day from "$lib/Day.svelte";
-    import {faTemperatureThreeQuarters} from "@fortawesome/free-solid-svg-icons";
+    import {faTemperatureThreeQuarters, faUmbrella} from "@fortawesome/free-solid-svg-icons";
     import * as animateScroll from "svelte-scrollto";
     import Fa from "svelte-fa";
 
@@ -20,6 +20,7 @@
 
     export let weatherData;
     const temperature = weatherData.temperature.data.find(d => d.place === "Tuen Mun").value;
+    const isRaining = weatherData.icon.some(icon => rainIcons.includes(icon));
 </script>
 
 <!--<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">-->
@@ -96,6 +97,9 @@
             </a>
 
             <div class="flex gap-2 items-center">
+                {#if isRaining}
+                    <Fa icon={faUmbrella} size="lg"/>
+                {/if}
                 <Fa icon={faTemperatureThreeQuarters} size="lg"/>
                 {temperature}°C
             </div>
