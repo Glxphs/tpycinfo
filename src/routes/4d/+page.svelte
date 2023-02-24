@@ -10,7 +10,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-3">
             {#each {length: 50} as _, i}
                 <div class="w-full justify-center justify-self-center mx-auto">
-                    <ClassesCard2 offset={i} classes={classes4d}></ClassesCard2>
+                    <ClassesCard2 offset={i} classes={classes4d} duty={true}></ClassesCard2>
                 </div>
             {/each}
         </div>

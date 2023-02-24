@@ -1,10 +1,11 @@
 <script>
     import {examTimetable, publicHolidays, timeIntervals} from "$lib/constants.js";
-    import {getDayClasses, getTodayDay} from "$lib/helper.js";
+    import {getDayClasses, getOnDuty, getTodayDay} from "$lib/helper.js";
     import Day from "$lib/Day.svelte";
 
     export let offset = 0;
     export let classes;
+    export let duty = false;
     export let badge = undefined;
 
     const today = new Date((new Date()).getTime() + 86400000 * offset);
@@ -20,6 +21,9 @@
     const examClasses = examTimetable[dayString];
 
     const isHoliday = dayString in publicHolidays || weekday === 'Sun'
+
+    let dutyNum = 0
+    if (duty) dutyNum = getOnDuty(offset, 31)
 </script>
 
 <div class="bg-white p-8 rounded-xl shadow shadow-slate-300 dark:shadow-slate-900 dark:bg-gray-900">
@@ -45,8 +49,11 @@
             {/if}
         </div>
     </div>
-    <p class="text-slate-500">{weekday},
-        <Day {offset}/>
+    <p class="text-slate-500">
+        {weekday}, <Day {offset}/>
+        {#if dutyNum !== 0}
+            , 值日生: {dutyNum}
+        {/if}
     </p>
 
     {#if lessons && lessons.length > 0}
