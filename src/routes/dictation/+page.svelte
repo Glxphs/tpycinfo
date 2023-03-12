@@ -108,8 +108,8 @@
                     {#each line as char, charIndex}
                         {#if canInput[index].includes(charIndex)}
                             {#if !submitted}
-                                <input on:change={(e) => {
-                                    if (e.data && inputFields.flat(Infinity)[coords2index[index][charIndex] + 1]) {
+                                <input on:input={(e) => {
+                                    if (e.data && inputFields.flat(Infinity)[coords2index[index][charIndex] + 1] && /[\u4e00-\u9fa5]/g.test(e.data)) {
                                         inputFields.flat(Infinity)[coords2index[index][charIndex] + 1].focus()
                                     }
                                 }} bind:this={inputFields[index][charIndex]}
