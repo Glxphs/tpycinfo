@@ -91,7 +91,7 @@
                 <div class="inline-flex flex-wrap gap-1">
                     {#each line as char, charIndex}
                         {#if canInput[index].includes(charIndex)}
-                            <input on:input={(e) => {
+                            <input on:change={(e) => {
                                 if (e.data && inputFields.flat(Infinity)[coords2index[index][charIndex] + 1]) {
                                     inputFields.flat(Infinity)[coords2index[index][charIndex] + 1].focus()
                                 }
