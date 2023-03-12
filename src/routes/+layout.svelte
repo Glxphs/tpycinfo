@@ -40,13 +40,7 @@
                 </li>
             </DropdownNavitem>
             <Navitem href="/bio/">Bio Image</Navitem>
-            <!--            <Navitem href="/4a">4A Timetable</Navitem>-->
-            <!--            <Navitem href="/4b">4B Timetable</Navitem>-->
-            <!--            <Navitem href="/4c">4C Timetable</Navitem>-->
-            <!--            <Navitem href="/4d">4D Timetable</Navitem>-->
-
-            <!--<Navitem href="/chem">Chem Tools</Navitem>
-            <Navitem href="/calc">Calculator Program</Navitem>-->
+            <Navitem href="/dictation/">Chinese Dict</Navitem>
         </Navbar>
         <PageTransitions pathname={data.pathname}>
             <slot></slot>
