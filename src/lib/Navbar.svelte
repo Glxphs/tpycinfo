@@ -43,7 +43,7 @@
     <nav class="backdrop-blur-md px-4 lg:px-6 py-2 bg-white/30 dark:bg-gray-700/30 shadow-slate-800/10 shadow-md">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl border-b-slate-200 dark:border-b-slate-700 border-b mb-2">
             <span class="flex items-center justify-between">
-                <a href="#" class="self-center text-xl font-mono font-semibold whitespace-nowrap dark:text-white">TPYC Info</a>
+                <a href="/" class="self-center text-xl font-mono font-semibold whitespace-nowrap dark:text-white">TPYC Info</a>
             </span>
             <div class="flex items-center lg:order-2">
                 <button on:click={()=>{$dark = !$dark}} type="button"
