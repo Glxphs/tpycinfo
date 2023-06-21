@@ -41,6 +41,7 @@
             </DropdownNavitem>
             <Navitem href="/bio/">Bio Image</Navitem>
             <Navitem href="/dictation/">Chinese Dict</Navitem>
+            <Navitem href="/marks/">平均分計算器</Navitem>
         </Navbar>
         <PageTransitions pathname={data.pathname}>
             <slot></slot>
