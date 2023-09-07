@@ -1,16 +1,14 @@
 <script>
-    import {getTodayDay} from "$lib/helper.js";
+    import {calculateDay} from './dates.ts';
+    import {DateTime} from "luxon";
 
     export let offset = 0;
 
-    const dayInfo = getTodayDay(offset);
+    const today = DateTime.now().setZone("Asia/Hong_Kong").plus({days: offset});
+    const dayInfo = calculateDay(today);
 </script>
 
-{#if 'day' in dayInfo}
-    Day {dayInfo.day}
-{:else}
-    {dayInfo.special}
-{/if}
+Day {dayInfo}
 
 
 

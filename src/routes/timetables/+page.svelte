@@ -1,0 +1,29 @@
+<script lang="ts">
+    import type { PageData } from './$types';
+    import Timetable from "$lib/Timetable.svelte";
+
+    let selectedClass: string = '5D';
+
+    export let data: PageData
+</script>
+
+<div class="container mx-auto justify-center my-10">
+    <div class="">
+        <div class="flex flex-col mx-auto gap-5">
+            <h2 class="text-3xl dark:text-white font-semibold text-center">Timetable</h2>
+            <div class="flex mx-auto">
+                {#each Object.keys(data.classes) as schoolClass}
+                    <div class="flex items-center mr-4">
+                        <input bind:group={selectedClass} id="inline-radio" type="radio" value={schoolClass} name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="inline-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{schoolClass}</label>
+                    </div>
+                {/each}
+            </div>
+            {#key selectedClass}
+                <div class="overflow-x-auto">
+                    <Timetable source={data.classes[selectedClass]} times={data.times} currentCycle={data.currentCycle} />
+                </div>
+            {/key}
+        </div>
+    </div>
+</div>
