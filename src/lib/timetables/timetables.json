@@ -14,6 +14,15 @@
         "15:30 - 16:10"
     ],
     "classes": {
+        "5A": [
+            ["Maths", "Maths", "E3", "E3", "Chem", "Chem", "Eng", "Eng", "Chi"],
+            ["Chi", "Chi", "Chi", "Chem", "E2", "E2", "PE", "PE"],
+            ["Maths", "Maths", "E2", "E3", "Eng", "Eng", "CSD", "CSD"],
+            ["Chi", "Chi", "Eng", "Maths", "E3", "E3", "Chem", "Chem"],
+            ["Chi", "Chi", "Eng", "Eng", "Eng", "CSD", "E2", "E2"],
+            ["Chem", "Chem", "Maths", "Maths", "Eng", "Eng", "E3", "E3"],
+            ["Maths", "Maths", "Chi", "Chi", "E2", "E2", "Eng", "CTP"]
+        ],
         "5C": [
             ["Econ", "Econ", "E3", "E3", "Eng", "Eng", "Maths", "Maths", "Chi"],
             ["Chi", "Chi", "Chi", "CSD", "E2", "E2", "Eng", "Eng"],
