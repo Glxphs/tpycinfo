@@ -13,7 +13,25 @@
         "14:50 - 15:30",
         "15:30 - 16:10"
     ],
+    "morning": [
+        "PG",
+        "CTP",
+        "PG",
+        "CNP",
+        "Hall",
+        "ENP",
+        "Hall"
+    ],
     "classes": {
+        "3A": [
+            ["Eng", "Eng", "PE", "PE", "Music", "Chi", "Maths", "C.Hist"],
+            ["Chem", "Chem", "LS2", "Geog", "Eng", "Eng", "Maths", "Chi"],
+            ["Phy", "Phy", "Eng", "Eng", "C.Hist", "Maths", "Chi", "Chi"],
+            ["Chi", "Chi", "Bio", "Bio", "LS1", "LS1", "Music", "Maths"],
+            ["LS2", "C.Hist", "DT/HE", "DT/HE", "Eng", "Eng", "CTP/Maths", "CTP/Maths"],
+            ["ICT", "ICT", "Chi", "Chi", "Maths", "Geog", "Eng", "Eng"],
+            ["Art", "Art", "Eng", "LS1", "Maths", "Maths", "Chi", "Chi"]
+        ],
         "5A": [
             ["Maths", "Maths", "E3", "E3", "Chem", "Chem", "Eng", "Eng", "Chi"],
             ["Chi", "Chi", "Chi", "Chem", "E2", "E2", "PE", "PE"],

@@ -1,14 +1,15 @@
 <script lang="ts">
     import type {PageData} from './$types';
     import Timetable from "$lib/Timetable.svelte";
+    import Meta from "$lib/Meta.svelte";
 
     let selectedClass: string = '5D';
 
     export let data: PageData
 </script>
-
+<Meta title="Timetable"/>
 <div class="container mx-auto justify-center my-10">
-    <div class="">
+    <div class="flex flex-col gap-10">
         <div class="flex flex-col mx-auto gap-5">
             <h2 class="text-3xl dark:text-white font-semibold text-center">Timetable</h2>
             <div class="flex mx-auto">
@@ -24,12 +25,18 @@
             </div>
             {#key selectedClass}
                 <div class="overflow-x-auto mx-auto">
-                    <Timetable source={data.classes[selectedClass]} times={data.times}
+                    <Timetable source={data.classes[selectedClass]} times={data.times} morning={data.morning}
                                currentCycle={data.currentCycle}/>
                 </div>
             {/key}
+            <div class="px-5">
+                <div class="text-xs font-semibold text-center text-gray-400">
+                    <p>PG: Playground</p>
+                    <p>CTP: Class Teacher Period</p>
+                    <p>CNP: Chinese Newspaper</p>
+                    <p>ENP: English Newspaper</p>
+                </div>
+            </div>
         </div>
-<!--        <iframe class="mx-auto mt-10 m-3 w-full" src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FHong_Kong&showTitle=0&showNav=1&showTz=0&showCalendars=0&showTabs=1&hl=en&src=bTE5MTAyMUB0cHljLmVkdS5oaw&src=Y19jbGFzc3Jvb200MjM5NGM2ZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=dHB5Y3dlYkB0cHljLmVkdS5oaw&src=emguaG9uZ19rb25nI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%23007b83&color=%233F51B5&color=%230B8043"-->
-<!--                height="600" frameborder="0" scrolling="no"></iframe>-->
     </div>
 </div>

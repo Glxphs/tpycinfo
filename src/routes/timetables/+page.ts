@@ -14,6 +14,9 @@ export const load: PageLoad = ({ params }) => {
         times: {
             ...timetables.times
         },
+        morning: {
+            ...timetables.morning
+        },
         currentCycle: currentCycle
     };
 };

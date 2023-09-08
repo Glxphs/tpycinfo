@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
 		"test": "playwright test",
@@ -13,6 +13,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@melt-ui/pp": "^0.1.2",
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^1.0.0",
 		"@sveltejs/kit": "^1.7.0",
@@ -31,6 +32,7 @@
 		"sass": "^1.57.1",
 		"svelte": "^3.54.0",
 		"svelte-check": "^2.9.2",
+		"svelte-sequential-preprocessor": "^2.0.1",
 		"tailwindcss": "^3.2.4",
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
@@ -41,6 +43,7 @@
 		"@akikowo/chemical-balancer": "^1.0.8",
 		"@fortawesome/free-brands-svg-icons": "^6.2.1",
 		"@fortawesome/free-solid-svg-icons": "^6.2.1",
+		"@melt-ui/svelte": "^0.47.5",
 		"@tinymce/tinymce-svelte": "^1.0.0",
 		"@tiptap/core": "^2.0.0-beta.209",
 		"@tiptap/extension-bold": "^2.0.0-beta.209",
