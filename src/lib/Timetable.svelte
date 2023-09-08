@@ -18,15 +18,15 @@
     const now = DateTime.now().setZone("Asia/Hong_Kong")
 </script>
 
-<div class="relative overflow-x-auto max-w-screen-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-fixed">
+<div class="relative">
+    <table class="text-sm text-left text-gray-500 dark:text-gray-400 table-fixed w-screen max-w-screen-md overflow-hidden">
         <thead class="text-xs text-gray-900 uppercase dark:text-gray-400">
         <tr>
 <!--            <th scope="col" class="px-6 py-3 w-32">-->
 <!--                Time-->
 <!--            </th>-->
             {#each daysArray as day}
-                <th scope="col" class="px-6 py-4 w-20 text-center">
+                <th scope="col" class="py-4 text-center">
                     <div>
                         {currentCycle.cycles[day].date.toFormat("d/L") || "-"}
                     </div>
@@ -47,14 +47,14 @@
 <!--                    {times[lessonIndex]}-->
 <!--                </th>-->
                 {#each daysArray as day}
-                    <td class="px-6 py-1 text-center {currentCycle.cycles[day].date.hasSame(now, 'day') ? 'dark:text-gray-200 text-gray-800 font-semibold' : ''}">
+                    <td class="py-1 text-center {currentCycle.cycles[day].date.hasSame(now, 'day') ? 'dark:text-gray-200 text-gray-800 font-semibold' : ''}">
                         {source[day][lessonIndex] || ""}
                     </td>
                 {/each}
             </tr>
             {#if extraSessions[lessonIndex]}
                 <tr class="bg-white dark:bg-gray-800">
-                    <td class="px-6 py-1 text-xs font-semibold whitespace-nowrap text-center" colspan="7">
+                    <td class="py-1 text-xs font-semibold whitespace-nowrap text-center" colspan="7">
                         {extraSessions[lessonIndex]}
                     </td>
                 </tr>
