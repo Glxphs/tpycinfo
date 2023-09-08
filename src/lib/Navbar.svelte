@@ -39,7 +39,7 @@
 <!--</nav>-->
 
 
-<header class="sticky top-0">
+<header class="sticky top-0 z-50">
     <nav class="backdrop-blur-md px-4 lg:px-6 py-2 bg-white/30 dark:bg-gray-700/30 shadow-slate-800/10 shadow-md">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl border-b-slate-200 dark:border-b-slate-700 border-b mb-2">
             <span class="flex items-center justify-between">

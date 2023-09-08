@@ -2,13 +2,16 @@
     import type {PageData} from './$types';
     import Timetable from "$lib/Timetable.svelte";
     import Meta from "$lib/Meta.svelte";
+    import {DateTime} from "luxon";
+    import Fa from "svelte-fa";
+    import {faListCheck, faPencil} from "@fortawesome/free-solid-svg-icons";
 
     let selectedClass: string = '5D';
 
     export let data: PageData
 </script>
 <Meta title="Timetable"/>
-<div class="container mx-auto justify-center my-10">
+<div class="container mx-auto justify-center mt-10">
     <div class="flex flex-col gap-10">
         <div class="flex flex-col mx-auto gap-5">
             <h2 class="text-3xl dark:text-white font-semibold text-center">Timetable</h2>
@@ -37,6 +40,27 @@
                     <p>ENP: English Newspaper</p>
                 </div>
             </div>
+            {#if selectedClass === "5D"}
+                <div>
+                    <h2 class="text-xl dark:text-white font-semibold text-center">5D Upcoming Events</h2>
+                </div>
+                <div class="max-w-screen-lg">
+                    {#each data.tasks as task}
+                        <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-600 py-3 px-2 bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 dark:hover:from-slate-700">
+                            <div class="inline-flex items-center space-x-2">
+                                <div>
+                                    <Fa icon={faListCheck} class="text-gray-400 dark:text-gray-500"/>
+                                </div>
+                                <div>{task.name}</div>
+                                <div>{task.notes}</div>
+                            </div>
+                            <div class="px-2">
+                                <div class="text-xs font-semibold text-gray-400">{DateTime.fromISO(task.due_on).toFormat("LLL d")}</div>
+                            </div>
+                        </div>
+                    {/each}
+                </div>
+            {/if}
         </div>
     </div>
 </div>
