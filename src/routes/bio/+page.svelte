@@ -329,6 +329,7 @@
                                     maxZoom={10}
                                     zoomSpeed={0.1}
                                     cropShape={imageObj.circleCrop ? 'round' : 'rect'}
+                                    restrictPosition={false}
                                     bind:crop
                                     bind:zoom
                                     on:cropcomplete={(e) => pixelCrop = e.detail.pixels}
